@@ -1,0 +1,29 @@
+QUESTION :
+GIVEN TWO VECTORS A AND B :
+A=[2,-1,2]   B=[1,2,3]
+Tasks:
+1)Compute the dot product of 𝑎⋅𝑏
+
+2)Find the magnitude of both 
+𝑎 and 𝑏
+* Use the formula:
+cos⁡(𝜃) =  𝑎⋅𝑏/∥𝑎∥⋅∥𝑏∥
+
+Compute the projection of 𝑎 onto 𝑏:
+proj:
+𝑏(𝑎) = 𝑎⋅𝑏/∥𝑏∥**2⋅𝑏
+
+
+###SOLUTION CODE
+import numpy as np
+a = np.array([2,-1,2])
+b = np.array([1,2,3])
+dot = a.dot(b)
+print(f"dot product:{dot}")
+mag_a=np.linalg.norm(a)
+mag_b=np.linalg.norm(b)
+print(f"the magnitiude is :{a},{b}")
+theta = np.arccos(dot/(mag_a*mag_b))
+print(theta)  
+proj =(dot/(mag_b**2)) * b
+print(f"projection of a into b is {proj}")
