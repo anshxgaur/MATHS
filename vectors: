@@ -43,7 +43,16 @@ def gram_schmdit(vectors):
 vectors =[np.array([1,1,0]), np.array([1,0,1])]
 ortho = gram_schmdit(vectors)
 print("orthogonal_vectors:", ortho)
-               
+
+
+# challenge question 
+#given three vectors v1,v2,v3 values of vectors v1 =(1,2,3) , v2=(2,0,1) , v3=(3,1,0): 
+#tasks: 1) orthogonalize them using the gram-schmidt process to produce u1,u2,u3.
+# 2) normalize each uk to get an orthogonal basis e1,e2,e3. forumula hint( ek = uk/ !!uk!!)
+# 3) verify that 
+#. each pair of ei,ej is orthogonal (ei.ej =0)
+#. each vector has unit vector(!!ek!! =1)
+#4) once you have the orthogonal basis use it to project a new vector w =(4,2,3) onto subspace spanned by {e1,e2,e3) projection formula : proj(w) = (w.ek)ek
 
 
 
