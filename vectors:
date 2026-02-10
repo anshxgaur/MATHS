@@ -55,4 +55,44 @@ print("orthogonal_vectors:", ortho)
 #4) once you have the orthogonal basis use it to project a new vector w =(4,2,3) onto subspace spanned by {e1,e2,e3) projection formula : proj(w) = (w.ek)ek
 
 
+# SOLUTION CODE
+import numpy as np
+
+v1 = np.array([1, 2, 3], dtype=float)
+v2 = np.array([2, 0, 1], dtype=float)
+v3 = np.array([3, 1, 0], dtype=float)
+w  = np.array([4, 2, 3], dtype=float)
+
+def gram_schmidt(vectors):
+    """Perform Gram-Schmidt orthogonalization."""
+    orthogonal = []
+    for v in vectors:
+        u = v.copy()
+        for u_prev in orthogonal:
+            u -= np.dot(v, u_prev) / np.dot(u_prev, u_prev) * u_prev
+        orthogonal.append(u)
+    return orthogonal
+
+def normalize(vectors):
+    """Normalize vectors to unit length."""
+    return [u / np.linalg.norm(u) for u in vectors]
+
+u1, u2, u3 = gram_schmidt([v1, v2, v3])
+
+e1, e2, e3 = normalize([u1, u2, u3])
+
+print("Dot products (should be ~0):")
+print("e1·e2 =", np.dot(e1, e2))
+print("e1·e3 =", np.dot(e1, e3))
+print("e2·e3 =", np.dot(e2, e3))
+
+print("\nNorms (should be 1):")
+print("||e1|| =", np.linalg.norm(e1))
+print("||e2|| =", np.linalg.norm(e2))
+print("||e3|| =", np.linalg.norm(e3))
+
+# Step 4: Projection of w onto span{e1,e2,e3}
+proj_w = sum(np.dot(w, e) * e for e in [e1, e2, e3])
+print("\nProjection of w =", proj_w)
+
 
